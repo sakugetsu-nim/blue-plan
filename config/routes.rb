@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  Rails.application.routes.draw do
+    get '/blue_plan/calendar', to: 'blue_plan#calendar'
+
+  end
+  
+  
 end

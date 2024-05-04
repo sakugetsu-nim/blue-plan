@@ -65,3 +65,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# 追記
+gem 'simple_calendar', '~> 2.0'
