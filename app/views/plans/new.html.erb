@@ -1,0 +1,25 @@
+<h1>新規登録画面</h1>
+
+
+<%= form_with model:@post do |form| %>
+    <div>
+        <%= form.label :"タイトル" %><br>
+        <%= form.text_field :title %>
+    </div>
+
+    <div>
+        <%= form.label :"内容" %><br>
+        <%= form.text_area :body %>
+    </div>
+
+    <div>
+        <%= form.label :"開始時間" %><br>
+        <%= form.datetime_field :time %>
+    </div>
+
+    <div>
+        <%= form.submit "保存" %> <!-- 保存ボタン -->
+        <%= link_to "calendarに戻る", '/plans/calendar', class: "btn btn-secondary" %> <!-- 戻るボタン -->
+    </div>
+<% end %>
+
