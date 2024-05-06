@@ -1,5 +1,4 @@
 class PlansController < ApplicationController
-
     def index
     @plans = Plan.all
     end
@@ -14,6 +13,5 @@ class PlansController < ApplicationController
 
     def create
         p params
-    end
-
+    end    
 end
