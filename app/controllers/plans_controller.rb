@@ -1,19 +1,32 @@
 class PlansController < ApplicationController
 
     def index
-    @plans = Plan.all
+        @plans = Plan.all
     end
 
     def calendar
-    @plans = Plan.all
+        @plans = Plan.all
     end
 
     def new
-    @plans = Plan.new
+        @plan = Plan.new
     end
 
     def create
-        p params
+        @plan = Plan.new(plan_params)
+        if @plan.save
+            redirect_to @plan 
+        else
+            render 'new'
+        end
     end
 
+    def show
+        @plan = Plan.find(params[:id])
+    end
+
+    private
+    def plan_params
+        params.require(:plan).permit(:title, :body, :start_time)
+    end
 end

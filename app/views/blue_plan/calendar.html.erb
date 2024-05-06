@@ -1,4 +1,10 @@
 <h1>ここにcalendarを表示する</h1>
-<%= month_calendar do |date| %>
-    <%= date %>
+<%= month_calendar events: @plans do |date, events| %>
+    <%= date.day %>
+
+    <% events.each do |plan| %>
+        <div>
+            <%= plan.title %>
+        </div>
+    <% end %>
 <% end %>
