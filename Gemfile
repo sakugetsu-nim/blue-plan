@@ -69,3 +69,7 @@ end
 # 追記
 gem 'simple_calendar', '~> 2.0'
 gem 'sassc'
+
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
+gem "sassc-rails"

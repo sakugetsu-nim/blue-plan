@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # Custom route for plan index
   Rails.application.routes.draw do
-  # Additional routes for plans
+    # Additional routes for plans
     get 'plans' => 'plans#index'
     get 'plans/new' => 'plans#new'
     post 'plans/new' => 'plans#create'
