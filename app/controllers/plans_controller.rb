@@ -11,4 +11,9 @@ class PlansController < ApplicationController
     def new
     @plans = Plan.new
     end
+
+    def create
+        p params
+    end
+
 end
