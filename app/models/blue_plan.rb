@@ -1,2 +1,0 @@
-class BluePlan < ApplicationRecord
-end
