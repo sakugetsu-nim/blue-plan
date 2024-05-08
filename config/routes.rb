@@ -8,17 +8,11 @@ Rails.application.routes.draw do
 
   # Custom route for plan index
   Rails.application.routes.draw do
-    get '/plans/index', to: 'plans#index'
-
-# Additional routes for plans
-      get 'plans' => 'plans#index'
-      get 'plans/new' => 'plans#new'
-      post 'plans/new' => 'plans#create'
-      get 'plans/calendar' => 'plans#calendar'
-      get '/plans/show', to: 'plans#show'
-
+    # Additional routes for plans
+    get 'plans' => 'plans#index'
+    get 'plans/new' => 'plans#new'
+    post 'plans/new' => 'plans#create'
+    get 'plans/calendar' => 'plans#calendar'
   end
-  
-  
 end
 
