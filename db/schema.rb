@@ -14,8 +14,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_131247) do
   create_table "plans", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
-    t.text "content"
-    t.date "start_time"
+    t.string "body"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_plans_on_user_id"

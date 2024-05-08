@@ -4,7 +4,7 @@ class PlansController < ApplicationController
     end
 
     def calendar
-        @plans = Plan.all
+        @plans = Plan.where(calendar_id: params[:id]) # 'calendar' に関連する予定を取得する
     end
 
     def new
@@ -14,15 +14,22 @@ class PlansController < ApplicationController
     def create
         @plan = Plan.new(plan_params)
         if @plan.save
-            redirect_to @plan 
+            redirect_to @plan, notice: "予定を登録しました"
         else
+            flash.now[:alert] = "予定の登録に失敗しました"
             render 'new'
         end
     end
+    
 
     def show
-        @plan = Plan.find(params[:id])
-    end
+        if params[:id] == "calendar"
+          redirect_to calendar_path
+        else
+          @plan = Plan.find(params[:id])
+        end
+      end
+      
 
     private
     def plan_params
