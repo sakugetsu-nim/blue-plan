@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     get 'plans' => 'plans#index'
     get 'plans/new' => 'plans#new'
     post 'plans/new' => 'plans#create'
-    get 'plans/calendar' => 'plans#calendar'
+    get 'plans/calendar' => 'plans#calendar', as: 'calendar'
+
   end
 end
 

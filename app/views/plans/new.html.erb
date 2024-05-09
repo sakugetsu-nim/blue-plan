@@ -4,6 +4,10 @@
     </div>
     <%= form_with model:@plan do |form| %>
 
+        <div class=from-group mt-3>
+            <%= form.label :UserID%>
+            <%= form.number_field :user_id, class: "form-control" %>
+
         <div class="form-group mt-3">
             <%= form.label :"タイトル" %>
             <%= form.text_field :title, class: "form-control" %>
