@@ -24,10 +24,8 @@ class PlansController < ApplicationController
 
     def show
         if params[:id] == "calendar"
-          # 特定の条件でリダイレクト
           redirect_to calendar_path
         else
-          # 数値の場合にプランをロード
           @plan = Plan.find(params[:id])
         end
       end
