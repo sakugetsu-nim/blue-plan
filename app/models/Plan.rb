@@ -1,8 +1,8 @@
 class Plan < ApplicationRecord
-  belongs_to :user
+    <%= form_with model:@plan do |form| %>
+        <div>
+            <%= form.label :タイトル %>
+            <%= form.text_field :title %>
 
-  validates :user_id, presence: true
-  validates :title, presence: true
-  validates :start_time, presence: true
-  validates :body, presence: true
+
 end
