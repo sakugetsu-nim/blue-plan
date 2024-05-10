@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get 'plans/new' => 'plans#new'
     post 'plans/new' => 'plans#create'
     get 'plans/calendar' => 'plans#calendar'
+    
+    resources :plans # これはendの上に書く
   end
 end
 

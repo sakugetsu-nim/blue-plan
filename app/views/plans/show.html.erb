@@ -1,0 +1,20 @@
+<h1>投稿詳細</h1>
+
+<% if @plan %>
+  <p>
+      タイトル<br>
+      <%= @plan.title %>
+  </p>
+
+  <p>
+      内容<br>
+      <%= @plan.content %>
+  </p>
+
+  <p>
+      開始時間<br>
+      <%= @plan.start_time %>
+  </p>
+<% else %>
+  <p>予定が見つかりません。</p>
+<% end %>
