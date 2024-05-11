@@ -10,10 +10,17 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     # Additional routes for plans
     get 'plans' => 'plans#index'
-    post 'plans' => 'plans#create'
+
+
+    get 'plans/index' => 'plans#index'
     get 'plans/new' => 'plans#new'
     post 'plans/new' => 'plans#create'
+    #追加
     get 'plans/calendar' => 'plans#calendar'
+    post 'plans/calendar' => 'plans#create'
+    root to: 'plans#calendar'
+    
+    resources :plans # これはendの上に書く
   end
 end
 

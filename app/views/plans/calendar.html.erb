@@ -1,4 +1,37 @@
+<%= link_to "予定を書く", '/plans/new' %>
+<%= link_to "一覧を見る", '/plans/index' %>
+<%= link_to "ログアウト", '/plans/index' %>
 <h1>ここにcalendarを表示する</h1>
-<%= month_calendar do |date| %>
-    <%= date %>
+<%
+=begin%>
+追加 
+<%
+=end%>
+<% if flash.now[:notice].present? %>
+    <div class="alert alert-success">
+    <%= flash.now[:notice] %>
+    </div>
 <% end %>
+
+
+<%= month_calendar events: @plans do |date, events| %>
+    <%= date.day %>
+
+<%
+=begin%>
+追記 :calendarを表示
+<%
+=end%>
+
+    <ul>
+        <% events.each do |event| %>
+        <li>
+        <%= link_to plan_path(event.id) do %>
+            <%= event.title %>
+        <% end %>
+        </li>
+    </ul>
+    <% end %>
+<% end %>
+
+
