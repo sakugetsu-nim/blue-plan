@@ -14,13 +14,19 @@ class PlansController < ApplicationController
     end
 
     def create
-        Plan.create(plan_parames)
-        redirect_to @plans_path, notice: "予定を登録しました"
-       
+        @plan = Plan.new(plan_params)
+    
+        if @plan.save
+        redirect_to plans_calendar_path, notice: "予定を登録しました"
+        else
+        flash.now[:alert] = @plan.errors.full_messages.join(', ')
+        render :new
+        end
     end
+
     
     def show
-       @plan = Plan.find(params[:id])
+        @plan = Plan.find(params[:id])
         
     end
 
