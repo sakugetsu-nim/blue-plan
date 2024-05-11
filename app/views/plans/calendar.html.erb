@@ -23,7 +23,7 @@
     <ul>
         <% events.each do |event| %>
         <li>
-        <%= link_to edit_event_path(event.id) do %>
+        <%= link_to plans_path(event.id) do %>
             <%= event.title %>
         <% end %>
         </li>
