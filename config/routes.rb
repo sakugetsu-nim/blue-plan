@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'plans' => 'plans#index'
     get 'plans/new' => 'plans#new'
     post 'plans/new' => 'plans#create'
-    get 'plans/calendar' => 'plans#calendar'
+    root to: 'plans#calendar'
     
     resources :plans # これはendの上に書く
   end
