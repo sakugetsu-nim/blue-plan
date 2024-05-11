@@ -16,14 +16,14 @@
 
 <%
 =begin%>
- 追記 
+ 追記 :calendarを表示
 <%
 =end%>
 
     <ul>
         <% events.each do |event| %>
         <li>
-        <%= link_to plans_path(event.id) do %>
+        <%= link_to plan_path(event.id) do %>
             <%= event.title %>
         <% end %>
         </li>

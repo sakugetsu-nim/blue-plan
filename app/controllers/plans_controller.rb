@@ -27,8 +27,14 @@ class PlansController < ApplicationController
 
     
     def show
-        @plan = Plan.find(params[:id])
-        
+        @plan = Plan.find_by(id: params[:id])
+        if @plan
+        # レコードが見つかった場合の処理
+        render :show
+        else
+        # レコードが見つからなかった場合の処理
+        redirect_to root_path, alert: "指定された予定は見つかりませんでした。"
+        end
     end
 
     def destroy

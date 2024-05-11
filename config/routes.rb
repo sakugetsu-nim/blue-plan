@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     # Additional routes for plans
     get 'plans' => 'plans#index'
+    get 'plans/index' => 'plans#index'
     get 'plans/new' => 'plans#new'
     post 'plans/new' => 'plans#create'
     #追加
