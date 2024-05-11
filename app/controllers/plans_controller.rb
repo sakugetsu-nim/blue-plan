@@ -17,7 +17,8 @@ class PlansController < ApplicationController
         @plan = Plan.new(plan_params)
     
         if @plan.save
-        redirect_to plans_calendar_path, notice: "予定を登録しました"
+            redirect_to "/plans/calendar", notice: "予定を登録しました"
+
         else
         flash.now[:alert] = @plan.errors.full_messages.join(', ')
         render :new
@@ -35,8 +36,8 @@ class PlansController < ApplicationController
         @plan.destroy
         redirect_to plans_path, notice: "削除しました"
     end
-      
-      
+
+    
     private
     def plan_params
         params.require(:plan).permit(:title, :content, :start_time, :user_id)

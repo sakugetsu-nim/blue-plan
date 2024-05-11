@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post 'plans/new' => 'plans#create'
     #追加
     get 'plans/calendar' => 'plans#calendar'
+    post 'plans/calendar' => 'plans#create'
     root to: 'plans#calendar'
     
     resources :plans # これはendの上に書く
