@@ -1,6 +1,40 @@
 <h1>ここにcalendarを表示する</h1>
+<%
+=begin%>
+ 追加 
+<%
+=end%>
+<% if flash.now[:notice].present? %>
+    <div class="alert alert-success">
+    <%= flash.now[:notice] %>
+    </div>
+<% end %>
+
 
 <%= month_calendar events: @plans do |date, events| %>
     <%= date.day %>
+
+<%
+=begin%>
+ 追記 
+<%
+=end%>
+
+    <ul>
+        <% events.each do |event| %>
+        <li>
+        <%= link_to edit_event_path(event.id) do %>
+            <%= event.title %>
+        <% end %>
+        </li>
+    </ul>
+
 <% end %>
+
+
+
+
+
+<% end %>
+
 
