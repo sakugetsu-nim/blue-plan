@@ -12,6 +12,12 @@ class PlansController < ApplicationController
     end
 
     def create
-        p params
-    end    
+    @plans = Plan.new(params[:plan])
+    @plans.save
+    end
+
+    # private
+    # def plan_params
+    #     params.require(:plan).permit(:title, :content, :start_time)
+    # end
 end
