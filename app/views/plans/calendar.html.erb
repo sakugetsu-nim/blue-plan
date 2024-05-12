@@ -1,37 +1,39 @@
-<%= link_to "予定を書く", '/plans/new' %>
-<%= link_to "一覧を見る", '/plans/index' %>
-<%= link_to "ログアウト", '/plans/index' %>
-<h1>ここにcalendarを表示する</h1>
-<%
-=begin%>
-追加 
-<%
-=end%>
-<% if flash.now[:notice].present? %>
-    <div class="alert alert-success">
-    <%= flash.now[:notice] %>
+<div class="bg-primary text-white text-center p-3">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 >Monthly Calendar</h2>
+            </div>        
+            <div>
+                <%= link_to '<i class="fa fa-pencil"></i> 予定を書く'.html_safe, '/plans/new', class: "btn btn-primary text-white border-white" %>
+                <%= link_to '<i class="fa fa-list"></i> 一覧を見る'.html_safe, '/plans/index', class: "btn btn-secondary" %>
+                <%= link_to '<i class="fa fa-sign-out"></i> ログアウト'.html_safe, '/logout', class: "btn btn-danger" %>
+            </div>
+        </div>
     </div>
-<% end %>
+</div>
 
-
-<%= month_calendar events: @plans do |date, events| %>
-    <%= date.day %>
-
-<%
-=begin%>
-追記 :calendarを表示
-<%
-=end%>
-
-    <ul>
-        <% events.each do |event| %>
-        <li>
-        <%= link_to plan_path(event.id) do %>
-            <%= event.title %>
-        <% end %>
-        </li>
-    </ul>
+<div class="container">
+    
+    <% if flash.now[:notice].present? %>
+        <div class="alert alert-success">
+        <%= flash.now[:notice] %>
+        </div>
     <% end %>
-<% end %>
 
+    <%= month_calendar events: @plans,cell_size: 50,day_height:50,first_day: 1 do |date, events| %>
+        <%= content_tag :div, date.day, class: "text-center" %>
 
+        <% if events.any? %>
+            <ul class="list-unstyled">
+            <% events.each do |event| %>
+                <li>
+                    <%= link_to plan_path(event.id), class: "text-decoration-none" do %>
+                        <%= event.title %>
+                    <% end %>
+                </li>
+            <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+</div>

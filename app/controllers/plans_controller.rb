@@ -14,6 +14,7 @@ class PlansController < ApplicationController
     end
 
     def create
+
         @plan = Plan.new(plan_params)
     
         if @plan.save
@@ -49,3 +50,4 @@ class PlansController < ApplicationController
         params.require(:plan).permit(:title, :content, :start_time, :user_id)
     end
 end
+>>>>>>> feature/sakugetsu
