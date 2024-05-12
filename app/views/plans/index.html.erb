@@ -1,3 +1,23 @@
 <div class="container">
-    <h1>登録予定一覧</h1>
+    <h1>登録データ一覧</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>内容</th>
+                <th>開始時間</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @plans.each do |plan| %>
+            <tr>
+                <td><%= plan.title %></td>
+                <td><%= plan.content %></td>
+                <td><%= plan.start_time %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
+<%= link_to "戻る", '/plans/calendar' %>
+

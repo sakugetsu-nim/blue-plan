@@ -2,7 +2,7 @@
     <div class="text-left mt-4 pb-2 border-bottom border-primary px-3" style="border-width: 10px;">
     <h1>新規登録画面</h1>
     </div>
-    <%= form_with model:@plan do |form| %>
+    <%= form_with(model: @plan, url:plans_path) do |form| %> 
 
         <div class=from-group mt-3>
             <%= form.label :UserID%>
@@ -28,6 +28,9 @@
             <%= form.submit "保存", class: "btn btn-primary mt-3 mx-3 btn-block" %>
             <%= link_to "戻る", '/plans/calendar', class: "btn btn-secondary mt-3 mx-3" %>
         </div>
+
+
+
     <% end %>
 </div>
 
