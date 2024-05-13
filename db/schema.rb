@@ -12,7 +12,6 @@
 
 
 ActiveRecord::Schema[7.1].define(version: 2024_05_10_133925) do
->>>>>>> feature/sakugetsu
   create_table "plans", force: :cascade do |t|
     t.string "title"
     t.text "content"
