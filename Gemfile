@@ -75,5 +75,3 @@ gem 'jquery-rails'
 gem "sassc-rails"
 
 gem 'font-awesome-sass', '~> 6.5.2'
-#gem追加
-gem 'devise'
