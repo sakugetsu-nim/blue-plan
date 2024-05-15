@@ -1,26 +1,31 @@
 Rails.application.routes.draw do
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  
+  #devise_for :users
+
+  # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Custom routes for plans
+  get 'plans' => 'plans#index'
+  get 'plans/index' => 'plans#index'
+  get 'plans/new' => 'plans#new'
+  post 'plans/new' => 'plans#create'
+  get 'plans/calendar' => 'plans#calendar'
+  post 'plans/calendar' => 'plans#create'
 
-  # Custom route for plan index
-  Rails.application.routes.draw do
-    # Additional routes for plans
-    get 'plans' => 'plans#index'
+  # Root path
+  root to: 'plans#calendar'
 
+  # Resource routes for plans
+  resources :plans
 
-    get 'plans/index' => 'plans#index'
-    get 'plans/new' => 'plans#new'
-    post 'plans/new' => 'plans#create'
-    #追加
-    get 'plans/calendar' => 'plans#calendar'
-    post 'plans/calendar' => 'plans#create'
-    root to: 'plans#calendar'
-    
-    resources :plans # これはendの上に書く
+  # Additional routes can be added here
+
+  #追加
+  devise_for :users
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+
   end
 end
-
