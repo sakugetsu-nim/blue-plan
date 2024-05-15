@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   #devise_for :users
 
   # Health check route
@@ -22,4 +23,9 @@ Rails.application.routes.draw do
 
   #追加
   devise_for :users
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+
+  end
 end
