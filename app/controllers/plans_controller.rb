@@ -38,6 +38,23 @@ class PlansController < ApplicationController
         end
     end
 
+    def edit
+        @plan = Plan.find(params[:id])
+    end
+
+    def update
+        @plan = Plan.find(params[:id])
+        if @plan.update(plan_params)
+        # show アクションにリダイレクト
+        redirect_to @plan
+        else
+        render 'edit', status: :unprocessable_entity
+        end
+    end
+      
+
+
+
     def destroy
         @plan = Plan.find(params[:id])
         @plan.destroy
