@@ -1,4 +1,6 @@
 class PlansController < ApplicationController
+    before_action :authenticate_user! #追加
+
     def index
         @plans = Plan.all
         @plan = Plan.new
