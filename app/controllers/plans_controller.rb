@@ -14,8 +14,8 @@ class PlansController < ApplicationController
     end
 
     def create
-
         @plan = Plan.new(plan_params)
+
     
         if @plan.save
             redirect_to "/plans/calendar", notice: "予定を登録しました"
@@ -39,21 +39,19 @@ class PlansController < ApplicationController
     end
 
     def edit
-        @plan = Plan.find(params[:id])
+        @plan = Plan.find_by(id: params[:id])
     end
+      
 
     def update
         @plan = Plan.find(params[:id])
         if @plan.update(plan_params)
-        # show アクションにリダイレクト
-        redirect_to @plan
+          redirect_to @plan, notice: 'Plan was successfully updated.'
         else
-        render 'edit', status: :unprocessable_entity
+          render :edit
         end
-    end
+      end
       
-
-
 
     def destroy
         @plan = Plan.find(params[:id])
@@ -64,6 +62,6 @@ class PlansController < ApplicationController
     
     private
     def plan_params
-        params.require(:plan).permit(:title, :content, :start_time, :user_id)
+        params.require(:plan).permit(:user_id, :title, :content, :start_time)
     end
 end
