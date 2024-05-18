@@ -26,12 +26,6 @@
 
 <div class="container">
     
-    <% if flash.now[:notice].present? %>
-        <div class="alert alert-success">
-        <%= flash.now[:notice] %>
-        </div>
-    <% end %>
-
     <%= month_calendar events: @plans,cell_size: 50,day_height:50,first_day: 1 do |date, events| %>
         <%= content_tag :div, date.day, class: "text-center" %>
 
