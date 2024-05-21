@@ -2,12 +2,13 @@ class PlansController < ApplicationController
     before_action :authenticate_user! #追加
 
     def index
-        @plans = Plan.all
-        @plan = Plan.new
+        # @plans = Plan.all
+        @plans = current_user.plans
     end
 
     def calendar
-        @plans = Plan.all
+        # @plans = Plan.all
+        @plans = current_user.plans
     end
     
 
