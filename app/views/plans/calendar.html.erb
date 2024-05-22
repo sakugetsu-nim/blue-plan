@@ -1,5 +1,5 @@
 <div class="bg-primary text-white text-center p-3">
-    <div class="container">
+    <div class="container ">
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <h2 >Monthly Calendar</h2>
@@ -13,12 +13,6 @@
                 <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
                 <% end %>
         </ul>
-
-
-
-
-
-                
             </div>
         </div>
     </div>
@@ -27,7 +21,7 @@
 <div class="container">
     
     <%= month_calendar events: @plans,cell_size: 50,day_height:50,first_day: 1 do |date, events| %>
-        <%= content_tag :div, date.day, class: "text-center" %>
+        <%= content_tag :div, date.day,class:"calendar-row" %>
 
         <% if events.any? %>
             <ul class="list-unstyled">
