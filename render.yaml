@@ -1,8 +1,8 @@
-databases:
-  - name: blue-plan_DB
-    databaseName: blue_plan_db
-    user: blue-plan
-    region: singapore
+# databases:
+#   - name: blue-plan_DB
+#     databaseName: blue_plan_db
+#     user: blue-plan
+#     region: singapore
 
 services:
   - type: web
@@ -14,9 +14,6 @@ services:
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: blue-plan_DB
-          property: connectionString
+        value: "sqlite3:db/development.sqlite3"
       - key: RAILS_MASTER_KEY
         sync: false
-
