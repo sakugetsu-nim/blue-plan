@@ -32,12 +32,13 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      t.string :username # Add this line to add the username column
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
+  
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
@@ -46,6 +47,15 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
   def self.down
     # By default, we don't want to make any assumption about how to roll back a migration when your
     # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
+    remove_column :users, :username # Rollbackに必要な場合は、usernameカラムを削除する
+    
+
+    # ロールバック時の処理を記述する
+    remove_column :users, :username
+    remove_column :users, :encrypted_password
+    remove_column :users, :reset_password_token
+    remove_column :users, :reset_password_sent_at
+    remove_column :users, :remember_created_at
   end
 end
+
