@@ -1,0 +1,39 @@
+<div class="bg-primary text-white text-center p-3">
+    <div class="container ">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 > <%= current_user.username %> さんのMonthly Calendar</h2>
+            </div> 
+
+            <div>
+                <%= link_to '<i class="fa fa-pencil"></i> 予定を書く'.html_safe, '/plans/new', class: "btn btn-primary text-white border-white" %></li>
+                <%= link_to '<i class="fa fa-list"></i> 一覧を見る'.html_safe, '/plans/index', class: "btn btn-secondary" %></li>
+            <% if current_user.present? %>
+                <%= link_to '<i class="fa fa-sign-out"></i> ログアウト'.html_safe, destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-danger" %>
+            <% else %>
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+                <% end %>
+        </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    
+    <%= month_calendar events: @plans,cell_size: 50,day_height:50,first_day: 1 do |date, events| %>
+        <%= content_tag :div, date.day,class:"calendar-row" %>
+
+        <% if events.any? %>
+            <ul class="list-unstyled">
+            <% events.each do |event| %>
+                <li>
+                    <%= link_to plan_path(event.id), class: "text-decoration-none" do %>
+                        <%= event.title %>
+                    <% end %>
+                </li>
+            <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+</div>

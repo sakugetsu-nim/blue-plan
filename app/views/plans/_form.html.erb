@@ -1,0 +1,30 @@
+       <%= form_with(model: @plan, url: @plan.persisted? ? plan_path(@plan) : plans_path) do |form| %>
+
+                <% if @plan && @plan.errors.any? %>
+                    <div>
+                        <ul>
+                            <% @plan.errors.full_messages.each do |message| %>
+                            <li><%- message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+
+
+            <div class="form-group mt-3">
+                <%= form.label :title %>
+                <%= form.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-group mt-3">
+                <%= form.label :content %>
+                <%= form.text_area :content, class: "form-control" %>
+            </div>
+            <div class="form-group mt-3">
+                <%= form.label :start_time %>
+                <%= form.datetime_field :start_time, class: "form-control" %>
+            </div>
+            <div class="text-center mt-3">
+                <%= form.submit "保存", class: "btn btn-primary mt-3 mx-3 btn-block" %>
+                <%= link_to "戻る", :back, class: "btn btn-secondary mt-3 mx-3" %>
+            </div>
+        <% end %>

@@ -65,3 +65,15 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# 追記
+gem 'simple_calendar', '~> 2.0'
+gem 'sassc'
+
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
+gem "sassc-rails"
+
+gem 'font-awesome-sass', '~> 6.5.2'
+#gem追加
+gem 'devise'

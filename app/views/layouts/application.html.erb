@@ -6,11 +6,61 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  
 
-  <body>
+
+  <body>    
+    <!-- Flash message -->
+    <% if flash[:alert] %>
+      <script>
+        alert("<%= j flash[:alert] %>");
+      </script>
+    <% end %>   
+    
     <%= yield %>
+
+    <div  class="fixed-bottom text-center">
+      <% if notice %>
+        <div id="flash-notice" class="alert alert-success text-center"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div id="flash-alert" class="alert alert-danger text-center"><%= alert %></div>
+      <% end %>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const flashNotice = document.getElementById("flash-notice");
+        const flashAlert = document.getElementById("flash-alert");
+
+        function slideUp(element) {
+          let height = element.offsetHeight;
+          requestAnimationFrame(function animate() {
+            if (height > 0) {
+              height -= 3; // スピード調整可能
+              element.style.height = height + "px";
+              requestAnimationFrame(animate);
+            } else {
+              element.style.display = "none";
+            }
+          });
+        }
+
+        if (flashNotice) {
+          setTimeout(() => {
+            slideUp(flashNotice);
+          }, 3000); // 3秒後に非表示
+        }
+
+        if (flashAlert) {
+          setTimeout(() => {
+            slideUp(flashAlert);
+          }, 3000); // 3秒後に非表示
+        }
+      });
+    </script>
+
   </body>
 </html>

@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>登録データ一覧</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>内容</th>
+                <th>開始時間</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @plans.each do |plan| %>
+            <tr>
+                <td><%= link_to plan.title, plan_path(plan) %></td> <!-- タイトルへのリンクを追加 -->
+                <td><%= plan.content %></td>
+                <td><%= plan.start_time %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+<div class="text-center">
+    <%= link_to "新規登録", new_plan_path, class: "btn btn-primary mt-3 mx-3" %>
+    <%= link_to "戻る", '/plans/calendar', class: "btn btn-secondary mt-3 mx-3" %>
+</div>
+
+
