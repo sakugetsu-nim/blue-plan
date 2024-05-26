@@ -6,9 +6,10 @@ bundle install
 yarn install
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
-bundle exec rake webpacker:compile
-bundle exec rake db:migrate
-bundle exec rake db:seed
+# bundle exec rake webpacker:compile
+# bundle exec rake db:migrate
+# bundle exec rake db:seed
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:migrate:reset　　#追記
 
 
 # bundle install && yarn install && bundle exec rake assets:precompile && bundle exec rake assets:clean && bundle exec rails webpacker:compile && bundle exec rake db:migrate && bundle exec rails db:seed
