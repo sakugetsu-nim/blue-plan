@@ -1,19 +1,23 @@
-# databases:
-#   - name: blue-plan_DB
-#     databaseName: blue_plan_db
-#     user: blue-plan
-#     region: singapore
+databases:
+  - name: blue-plan_DB
+    databaseName: blue_plan_db_thfm
+    user: blue_plan_db_thfm_user
+    region: singapore
+    plan: free
 
 services:
   - type: web
     name: blue-plan
-    env: ruby
+    runtime: ruby
     region: singapore
     plan: free
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
+    #startCommand: "bundle exec rails server"
     envVars:
       - key: DATABASE_URL
-        value: "sqlite3:db/development.sqlite3"
+        fromDatabase:
+          name: blue-plan_DB
+          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
