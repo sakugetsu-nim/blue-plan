@@ -9,6 +9,7 @@ services:
   - type: web
     name: blue-plan
     runtime: ruby
+    env: ruby    
     region: singapore
     plan: free
     buildCommand: "./bin/render-build.sh"
