@@ -1,6 +1,6 @@
 databases:
   - name: blue-plan_DB
-    databaseName: blue_plan_db_n7lv
+    databaseName: blue_plan_db_bkf3
     user: blue-plan
     region: singapore
     plan: free
